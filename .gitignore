@@ -1,6 +1,7 @@
 /Library
 /Assets/Prefabs/*.blend
 /Assets/Prefabs/Other/*.blend
+/Logs
 
 
 
