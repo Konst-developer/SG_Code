@@ -6,7 +6,7 @@ public class CameraControls : MonoBehaviour
 {
     private Vector3 lastMouse = new Vector3(255, 0, 255);
     float camSens = 0.25f;
-    float speed = 2f;
+    //float speed = 2f;
 
     void Start()
     {
