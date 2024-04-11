@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MoveControl : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class MoveControl : MonoBehaviour
     [SerializeField] private Tube3 tube3;
     [SerializeField] private Tube4 tube4;
     [SerializeField] private Screen01 sc01;
+    [SerializeField] private MovingWall mw;
     float speed = 2f;
     private Vector3 lastMouse = new Vector3(255, 255, 0);
     float camSens = 0.25f;
@@ -18,6 +20,7 @@ public class MoveControl : MonoBehaviour
     Vector3 dr = new Vector3(0, 0, 0);
     float lastPress = 0f;
     bool passwordOk=false;
+    bool moveWall = false;
     
 
     void Start()
@@ -47,6 +50,20 @@ public class MoveControl : MonoBehaviour
         else 
             transform.position = dr;
         checkEnter();
+
+        if (!moveWall)
+        {
+            if (tube1.getColor()==0&& tube2.getColor() == 8 && tube3.getColor() == 5 && tube4.getColor() == 0)
+            {
+                mw.startMove();
+                moveWall = true;
+            }
+        }
+        else
+        {
+            if (transform.position.x > 4.92f && transform.position.z < 17.0f)
+                SceneManager.LoadScene("scene2");
+        }
     }
 
     Vector3 getControls()
